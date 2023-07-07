@@ -1,16 +1,20 @@
 package com.example.tipping
 
-class OutputTipping(tippingComponents: TippingComponents) {
-    private val tippingComponents = tippingComponents
-    fun manageEmojis(){
-        var progress: Int = tippingComponents.percentageSeeker.progress
+class UiHandler() {
+    fun manageEmojis(tippingComponents: TippingComponents){
+        var progress: Int = tippingComponents.getPercentageSeeker().progress
         if (progress < 10){
-            tippingComponents.emoji.text = "( ͡◔ Ĺ̯ ͡◔)"
+            tippingComponents.getEmoji().text = "( ͡◔ Ĺ̯ ͡◔)"
         }else if (progress>20){
-            tippingComponents.emoji.text = "( ͡♥ Ĺ̯ ͡♥)"
+            tippingComponents.getEmoji().text = "( ͡♥ Ĺ̯ ͡♥)"
         }else{
-            tippingComponents.emoji.text = "( ͡◓ ͜ʖ ͡◓)"
+            tippingComponents.getEmoji().text = "( ͡◓ ͜ʖ ͡◓)"
         }
+    }
+    fun  updateTippingComponents(tippingComponents: TippingComponents, tip:Double, total:Double){
+        tippingComponents.getTotalTip().text = "$tip $"
+        tippingComponents.getTotalAmount().text = "$total $"
+        tippingComponents.getPercentageLabel().text = tippingComponents.getPercentageSeeker().progress.toString() + " %"
     }
 
 }
