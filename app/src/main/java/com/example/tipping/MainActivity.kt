@@ -20,8 +20,10 @@ class MainActivity : ComponentActivity() {
     private fun init(){
         billComputation = BillComputation()
         uiHandler = UiHandler()
+        val decimalInputAction = DecimalInputAction(billComputation, uiHandler)
+        val seekerBarAction = SeekerBarAction(billComputation, uiHandler)
         tippingComponents = TippingComponents(this)
-        userActionListener = UserActionListener(billComputation, uiHandler)
+        userActionListener = UserActionListener(listOf(decimalInputAction, seekerBarAction))
     }
 
 }
