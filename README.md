@@ -8,6 +8,7 @@
 
 ### Description
 The Tipping App is a mobile application designed to calculate tips based on a given bill amount and tip percentage. It provides a user-friendly interface for entering the bill amount and adjusting the tip percentage using a seek bar. The app then calculates the tip amount and the total bill including the tip.
+This is a project I built to practice my coding skills.
 ### Installation
 To install and run the Tipping App, follow these steps:
 1. Clone the repository
