@@ -1,15 +1,22 @@
 package com.example.tipping
 
+import android.widget.TextView
+
 class UiHandler() {
     fun manageEmojis(tippingComponents: TippingComponents){
         var progress: Int = tippingComponents.getPercentageSeeker().progress
-        if (progress < 10){
-            tippingComponents.getEmoji().text = "( ͡◔ Ĺ̯ ͡◔)"
-        }else if (progress>20){
-            tippingComponents.getEmoji().text = "( ͡♥ Ĺ̯ ͡♥)"
-        }else{
-            tippingComponents.getEmoji().text = "( ͡◓ ͜ʖ ͡◓)"
+        val emojiUI: TextView = tippingComponents.getEmoji();
+
+        val lowProgress = LowProgressState()
+        val highProgressState = HighProgressState()
+        val defaultProgressState = DefaultProgressState()
+
+        val emojiState: EmojiProgressState =  when{
+            progress<10 -> lowProgress
+            progress>20 ->highProgressState
+            else-> defaultProgressState
         }
+        emojiState.setEmojiState(emojiUI)
     }
     fun  updateTippingComponents(tippingComponents: TippingComponents, tip:Double, total:Double){
         tippingComponents.getTotalTip().text = "$tip $"
